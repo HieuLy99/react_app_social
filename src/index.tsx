@@ -11,6 +11,10 @@ import ErrorPage from './routes/error-page';
 import ContentContainer from './routes/ContentContainer';
 import i18next from 'i18next';
 import { I18nextProvider } from 'react-i18next';
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { createStore, applyMiddleware, Store } from "redux";
+import reducer from './store/reducer';
 /* other imports */
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,6 +22,9 @@ const root = ReactDOM.createRoot(
 i18next.init({
   interpolation: { escapeValue: false },  // React already does escaping
 });
+const store: Store<any, any> & {
+  dispatch: any
+} = createStore(reducer, applyMiddleware(thunk))
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,7 +41,9 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
+    <Provider store={store}>
       <RouterProvider router={router} />
+      </Provider>,
     </I18nextProvider>
   </React.StrictMode>
 );

@@ -7,7 +7,14 @@ export default function Root() {
   return (
     <>
       <div id="sidebar">
-      alo
+      <LeftMenuWrapper>
+        <div>
+          logo
+        </div>
+        <div>
+          leftmenu
+        </div>
+      </LeftMenuWrapper>
       </div>
       <div id="detail">
         <div id="header">
@@ -28,5 +35,7 @@ const ContentWrapper = styled.div`
   /* overflow: scroll; */
 `;
 
-const RootWrapper = styled.div`
+const LeftMenuWrapper = styled.div`
+display: flex;
+flex-direction: column;
 `;
