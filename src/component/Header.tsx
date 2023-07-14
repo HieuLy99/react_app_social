@@ -4,12 +4,13 @@ import HomeIcon from '@mui/icons-material/Home';
 import ChatIcon from '@mui/icons-material/Chat';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
+import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <HeaderMenuWrapper>
       <LeftHeaderMenu>
         <div>
-          <HomeIcon></HomeIcon> 
+          <HomeIcon></HomeIcon>
         </div>
         <ListItemMenu>
           <ItemMenu>item</ItemMenu>
@@ -25,9 +26,11 @@ export default function Header() {
         <RightHeaderItem>
           <CircleNotificationsIcon></CircleNotificationsIcon>
         </RightHeaderItem>
-        <RightHeaderItem>
-          <PersonPinIcon></PersonPinIcon> acc
-        </RightHeaderItem>
+        <Link to='login'>
+          <RightHeaderItem>
+            <PersonPinIcon></PersonPinIcon> acc
+          </RightHeaderItem>
+        </Link>
       </RightHeaderMenu>
     </HeaderMenuWrapper>
   )

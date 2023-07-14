@@ -15,6 +15,8 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware, Store } from "redux";
 import reducer from './store/reducer';
+import Login from './component/Login';
+import Draft from './component/Draft';
 /* other imports */
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -27,23 +29,32 @@ const store: Store<any, any> & {
 } = createStore(reducer, applyMiddleware(thunk))
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Login",
+    element: <Login></Login>,
+    errorElement: <ErrorPage></ErrorPage>,
+  },
+  {
+    path: "/*",
     element: <Root></Root>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: "contacts",
+        path: "new-feed",
         element: <ContentContainer />,
-      }
+      },
+      {
+        path: "draft-post",
+        element: <Draft />,
+      },
     ],
   },
 ]);
 root.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18next}>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-      </Provider>,
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </I18nextProvider>
   </React.StrictMode>
 );

@@ -45,3 +45,5 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 # react_app_social
+https://www.npmjs.com/package/react-draft-wysiwyg
+https://www.npmjs.com/package/react-toastify

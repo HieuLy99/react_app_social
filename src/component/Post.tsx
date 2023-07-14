@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react'
 import { styled } from 'styled-components';
 import LocalSeeIcon from '@mui/icons-material/LocalSee';
@@ -5,37 +6,35 @@ import PanoramaIcon from '@mui/icons-material/Panorama';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import { CMButton } from '../common/commonBtn';
+import { useNavigate } from "react-router-dom";
 export default function Post() {
-  return (
-    <PostWrapper>
-        <InputWrapper type="text" />
-        <ActionPostWrapper>
-            <ActionPostSession>
+    const navigate = useNavigate();
+    const handleDraft = () => {
+        navigate('/draft-post');
+    }
+    return (
+        <PostWrapper>
+            <InputWrapper type="text" />
+            <ActionPostWrapper>
+                <ActionPostSession>
                     <LocalSeeIcon></LocalSeeIcon>
                     <PanoramaIcon></PanoramaIcon>
                     <AttachFileIcon></AttachFileIcon>
                     <LocationOnIcon></LocationOnIcon>
                     <EmojiEmotionsIcon></EmojiEmotionsIcon>
-            </ActionPostSession>
-           <PostSession>
-            <Postbtn>Draft</Postbtn>
-           <Postbtn>
-                Post
-            </Postbtn>
-           </PostSession>
-        </ActionPostWrapper>
-    </PostWrapper>
-  )
+                </ActionPostSession>
+                <PostSession>
+                    <CMButton text='Draft' func={handleDraft}/>
+                    <CMButton text='Post' />
+                </PostSession>
+            </ActionPostWrapper>
+        </PostWrapper>
+    )
 }
 const PostSession = styled.div`
     display: flex;
     flex-direction: row;
-`;
-const Postbtn = styled.div`
-    border: 1px solid #ccc;
-    padding: 8px 20px;
-    border-radius: 5px;
-    margin: 0 0 0 10px;
 `;
 const ActionPostSession = styled.div`
     display: flex;
